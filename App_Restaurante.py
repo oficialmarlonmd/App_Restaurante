@@ -34,9 +34,11 @@ def alternar_status():
     print('\n')
     print('Alternar status')
     nome_restaurante =  input('Diga qual restaurante receberá o status: ').title()
+    restaurante_encontrado = False
     
     for restaurante in restaurantes:
         if nome_restaurante ==  restaurante['nome']:
+            restaurante_encontrado = True
             restaurante['status'] = not restaurante['status']
             
             if restaurante['status'] == False:
@@ -45,6 +47,10 @@ def alternar_status():
                 mansagem = f'O restaurante {nome_restaurante} foi desativado com sucesso!'
                                 
             # mensagem = f'O restaurante {nome_restaurante} foi altivado com sucesso!' if restaurante ['satatus'] == False else f'O restaurante {nome_restaurante} foi desativado com sucesso!'
+            
+    if restaurante_encontrado == False:
+        print('Restaurante encontrado!')
+        
     main()
     
 def finalizar_app():
