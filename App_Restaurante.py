@@ -7,7 +7,7 @@ restaurantes = []
 def cadastrar_restaurante():
     print('\n')
     print('Cadastrar restaurantes') 
-    nome_restaurante = input('Nome do restaurante:')
+    nome_restaurante = input('Nome do restaurante:').title()
     categoria = input('Categoria: ')
     dados_restaurante = {'nome' : nome_restaurante, 'categoria' : categoria, 'status': False}
     restaurantes.append(dados_restaurante)
@@ -33,7 +33,7 @@ def listar_restaurantes():
 def alternar_status():
     print('\n')
     print('Alternar status')
-    nome_restaurante =  input('Diga qual restaurante receberá o status: ')
+    nome_restaurante =  input('Diga qual restaurante receberá o status: ').title()
     
     for restaurante in restaurantes:
         if nome_restaurante ==  restaurante['nome']:
