@@ -71,28 +71,29 @@ def print_opcao():
 
     
 def escolher_opcao():
-    
-    opçao_escolha = int(input('Escolha umas das opcões numéricas acima: '))
+    try:
+        opçao_escolha = int(input('Escolha umas das opcões numéricas acima: '))
 
-    match opçao_escolha:
-        case 1:
-            cadastrar_restaurante()
-        case 2:
-            listar_restaurantes()
-        case 3 :
-            alternar_status()
-        case 4 :
-            finalizar_app()
-        case _:
-            opcao_invalida()
-
+        match opçao_escolha:
+            case 1:
+                cadastrar_restaurante()
+            case 2:
+                listar_restaurantes()
+            case 3 :
+                alternar_status()
+            case 4 :
+                finalizar_app()
+            case _:
+                opcao_invalida()
+    except:
+        opcao_invalida()
 
 def opcao_invalida():
-    print('ERRO! OPÇÃO INVÁLIDA!!!')
+    print('ERRO! OPÇÃO INVÁLIDA!!!') 
     main()
 
 def voltar_ao_menu():     
-    input('\n Precione o "ENTER" no teclado para voltar ao menu inicial.')
+    print('\n Precione o "ENTER" no teclado para voltar ao menu inicial.')
     main()
     
 def main():
@@ -100,5 +101,5 @@ def main():
     logo()
     print_opcao()
     escolher_opcao()
-      
+
 main()
