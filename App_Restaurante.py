@@ -1,20 +1,27 @@
-#Programa simple de cadastro de restaurante
+#Programa simples de cadastro de restaurante
+
+import os
 
 restaurantes = []
 
 def cadastrar_restaurante():
     print('\n')
-    print('Cadastrar restaurantes')
+    print('Cadastrar restaurantes') 
     nome_restaurante = input('Nome do restaurante:')
     categoria = input('Categoria: ')
     dados_restaurante = {'nome' : nome_restaurante, 'categoria' : categoria, 'status': False}
     restaurantes.append(dados_restaurante)
-    
-    main()
+    for restaurante in restaurantes:
+        if dados_restaurante['nome'] in restaurantes:
+             print('Erro!Dados cadastrados já exitem!!!')
+        else:
+            print('Cadastrado com sucesso!!!')
+            
+    voltar_ao_menu()
     
 def listar_restaurantes():
     print('\n')
-    print(f'{'Nome'.ljust(10)} | {'Categoria'.ljust(10)} | {'Status'.ljust(10)}')
+    print(f'{'Nome'.ljust(15)} | {'Categoria'.ljust(15)} | {'Status'.ljust(15)}')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
@@ -36,16 +43,17 @@ def alternar_status():
                 mansagem = f'O restaurante {nome_restaurante} foi altivado com sucesso!'
             else:
                 mansagem = f'O restaurante {nome_restaurante} foi desativado com sucesso!'
-                
+                                
             # mensagem = f'O restaurante {nome_restaurante} foi altivado com sucesso!' if restaurante ['satatus'] == False else f'O restaurante {nome_restaurante} foi desativado com sucesso!'
     main()
     
 def finalizar_app():
-    print(' Finalizando o APP......')
+ print('''\n Finalizando o APP......................
+ Obrigado pela prefênciaa!!!\n''')
     
 def logo():
     
-    print(""" ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 ℝ𝕖𝕤𝕥𝕒𝕦𝕣𝕒𝕟𝕥𝕖 """)
+    print("""\n ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 ℝ𝕖𝕤𝕥𝕒𝕦𝕣𝕒𝕟𝕥𝕖 """)
 
     
 def print_opcao():
@@ -70,10 +78,19 @@ def escolher_opcao():
         case 4 :
             finalizar_app()
         case _:
-            print('ERRO! OPÇÃO INVÁLIDA!!!')
+            opcao_invalida()
+
+
+def opcao_invalida():
+    print('ERRO! OPÇÃO INVÁLIDA!!!')
     main()
-     
+
+def voltar_ao_menu():     
+    input('\n Precione o "ENTER" no teclado para voltar ao menu inicial.')
+    main()
+    
 def main():
+    os.system('cls')
     logo()
     print_opcao()
     escolher_opcao()
